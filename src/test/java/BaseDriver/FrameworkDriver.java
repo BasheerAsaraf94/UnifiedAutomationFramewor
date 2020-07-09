@@ -1,4 +1,6 @@
 package BaseDriver;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -25,7 +27,7 @@ public class FrameworkDriver extends BrowserConfig
  
 	public static WebDriver driver;
 
-	public static void main(String[] args)  
+	public static void main(String[] args) throws InterruptedException  
 	{
 	
 	driver= setBrowser("https://demoqa.com/books", "Firefox");
@@ -62,8 +64,32 @@ public class FrameworkDriver extends BrowserConfig
 	
 	//Links
 	UF.jsScrollIntoView(DemoQA.tabLinks);
-	UF.Click(DemoQA.tabLinks);
-	UF.Click(DemoQA_Links.lnkHome); 
+	UF.Click(DemoQA.tabLinks);	
+	String CurrentTab = UF.GetCurrentTab();	
+	UF.Click(DemoQA_Links.lnkHome); 	
+	Thread.sleep(4000);
+	UF.SwitchTab(CurrentTab);
+	
+	List<WebElement> links = driver.findElements(By.tagName("a"));
+	Iterator<WebElement> i = links.iterator();
+	
+	System.out.println(links.size());
+	
+	while(i.hasNext()) {
+        WebElement anchor = i.next();
+        if(anchor.getAttribute("href").contains("javascript:void(0)")) {
+        	System.out.println(anchor.getText());
+            anchor.click();
+        }
+    }
+	
+	
+	
+	
+	
+	 
+	
+	
 	
 	
 	

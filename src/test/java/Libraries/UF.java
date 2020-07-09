@@ -1,5 +1,6 @@
 package Libraries;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
@@ -17,15 +18,11 @@ public class UF {
 	public static void TextBox(By ObjRep , String Keyvalue) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)FrameworkDriver.driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.sendKeys(Keyvalue);
 	}
 	public static void Click(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)FrameworkDriver.driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.click();
 	}
 	public static void Submit(By ObjRep) 
@@ -73,6 +70,22 @@ public class UF {
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		JavascriptExecutor executor = (JavascriptExecutor)FrameworkDriver.driver;
 		executor.executeScript("arguments[0].scrollIntoView()", ele);
+	}
+	
+	public static String GetCurrentTab()
+	{
+		String  currentTab = FrameworkDriver.driver.getWindowHandle();
+		return currentTab;
+	}
+	
+	public static void SwitchTab(String CurrentTab)
+	{
+		ArrayList<String> tabs = new ArrayList<String>(FrameworkDriver.driver.getWindowHandles());
+		for (String S:tabs) {
+		 if(!S.equals(CurrentTab)) {
+			 FrameworkDriver.driver.switchTo().window(CurrentTab);
+		 }
+		}
 	}
 	
 
