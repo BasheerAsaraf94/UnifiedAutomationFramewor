@@ -17,58 +17,42 @@ public class UF {
 	public static void TextBox(By ObjRep , String Keyvalue) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		//JavascriptExecutor executor = (JavascriptExecutor)driver;
-		//executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.sendKeys(Keyvalue);
 	}
 	public static void Click(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.click();
 	}
 	public static void Submit(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.submit();
 	}
 	public static void SendKeysEnter(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.sendKeys(Keys.ENTER);
 	}
 	public static boolean IsSelected(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		return ele.isSelected();
 	        
 	}
 	public static boolean IsEnabled(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		return ele.isEnabled();
 	}
 	public static boolean IsDisplayed(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		return ele.isDisplayed();
 	}
 	public static void DoubleCLick(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		Actions action = new Actions(driver);
 		action.doubleClick(ele).build().perform();
 	}	
@@ -76,8 +60,6 @@ public class UF {
 	public static void RightClick(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		Actions action = new Actions(driver).contextClick(ele);
 		action.build().perform();
 	}
