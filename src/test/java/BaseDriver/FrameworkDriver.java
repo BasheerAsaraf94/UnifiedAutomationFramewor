@@ -29,7 +29,7 @@ public class FrameworkDriver extends BrowserConfig
 	{
 	
 	driver= setBrowser("https://demoqa.com/books", "Firefox");
-	UF.Click(DemoQA.tabElements);
+	
 	
 	// Text Box
 	UF.Click(DemoQA.tabElements);
@@ -61,6 +61,7 @@ public class FrameworkDriver extends BrowserConfig
 	//UF.DoubleCLick(DemoQA_Buttons.btnDoubleClick); //Not Working
 	
 	//Links
+	UF.jsScrollIntoView(DemoQA.tabLinks);
 	UF.Click(DemoQA.tabLinks);
 	UF.Click(DemoQA_Links.lnkHome); 
 	

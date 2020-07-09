@@ -13,15 +13,19 @@ import org.openqa.selenium.interactions.Actions;
 import BaseDriver.FrameworkDriver;
 
 public class UF {
-	static WebDriver driver;
+	public static WebDriver driver;
 	public static void TextBox(By ObjRep , String Keyvalue) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		JavascriptExecutor executor = (JavascriptExecutor)FrameworkDriver.driver;
+		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.sendKeys(Keyvalue);
 	}
 	public static void Click(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		JavascriptExecutor executor = (JavascriptExecutor)FrameworkDriver.driver;
+		executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.click();
 	}
 	public static void Submit(By ObjRep) 
@@ -62,6 +66,13 @@ public class UF {
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		Actions action = new Actions(driver).contextClick(ele);
 		action.build().perform();
+	}
+	
+	public static void jsScrollIntoView(By ObjRep) 
+	{	
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		JavascriptExecutor executor = (JavascriptExecutor)FrameworkDriver.driver;
+		executor.executeScript("arguments[0].scrollIntoView()", ele);
 	}
 	
 
