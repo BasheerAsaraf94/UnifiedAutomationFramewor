@@ -17,8 +17,8 @@ public class UF {
 	public static void TextBox(By ObjRep , String Keyvalue) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].scrollIntoView()", ele);
+		//JavascriptExecutor executor = (JavascriptExecutor)driver;
+		//executor.executeScript("arguments[0].scrollIntoView()", ele);
 		ele.sendKeys(Keyvalue);
 	}
 	public static void Click(By ObjRep) 

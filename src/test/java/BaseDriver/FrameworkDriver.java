@@ -29,7 +29,7 @@ public class FrameworkDriver extends BrowserConfig
 	{
 	
 	driver= setBrowser("https://demoqa.com/books", "Firefox");
-	
+	UF.Click(DemoQA.tabElements);
 	
 	// Text Box
 	UF.Click(DemoQA.tabElements);
