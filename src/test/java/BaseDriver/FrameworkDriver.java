@@ -1,11 +1,22 @@
 package BaseDriver;
+import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
 import Libraries.BrowserConfig;
 import Libraries.UF;
 import ObjectRepository.DemoQA;
+import ObjectRepository.DemoQA_Buttons;
 import ObjectRepository.DemoQA_CheckBox;
+import ObjectRepository.DemoQA_Links;
 import ObjectRepository.DemoQA_RadioBtn;
 import ObjectRepository.DemoQA_TextBox;
    
@@ -19,6 +30,7 @@ public class FrameworkDriver extends BrowserConfig
 	
 	driver= setBrowser("https://demoqa.com/books", "Firefox");
 	
+	
 	// Text Box
 	UF.Click(DemoQA.tabElements);
 	UF.Click(DemoQA.tabTextBox);
@@ -31,30 +43,37 @@ public class FrameworkDriver extends BrowserConfig
 	//Checkbox
 	UF.Click(DemoQA.tabCheckBox);
 	UF.Click(DemoQA_CheckBox.chkboxHome);
-	System.out.println(UF.IsSelected(DemoQA_CheckBox.chkboxHome));
 	UF.Click(DemoQA_CheckBox.chklstbtn);
 	UF.Click(DemoQA_CheckBox.chkboxDesktop);
-	UF.IsDisplayed(DemoQA_CheckBox.chkboxDocuments);
-	UF.IsEnabled(DemoQA_CheckBox.chkboxDocuments);
 	
 	//Radiobutton
 	UF.Click(DemoQA.tabRadioBtn);
-	System.out.println(UF.IsSelected(DemoQA_RadioBtn.rdbtnYes));
-	System.out.println(UF.IsDisplayed(DemoQA_RadioBtn.rdbtnYes));
-	System.out.println(UF.IsEnabled(DemoQA_RadioBtn.rdbtnYes));
-	UF.Click(DemoQA_RadioBtn.rdbtnYes);
-	System.out.println(UF.IsSelected(DemoQA_RadioBtn.rdbtnYes));
-	
+	UF.Click(DemoQA_RadioBtn.rdbtnYes);	
 	UF.Click(DemoQA_RadioBtn.rdbImpressive);
-	
-	System.out.println(UF.IsSelected(DemoQA_RadioBtn.rdbtnNo));
-	System.out.println(UF.IsDisplayed(DemoQA_RadioBtn.rdbtnNo));
-	System.out.println(UF.IsEnabled(DemoQA_RadioBtn.rdbtnNo));
 	UF.Click(DemoQA_RadioBtn.rdbtnNo);
-	System.out.println(UF.IsSelected(DemoQA_RadioBtn.rdbtnNo));
 	
-	//Tablse
-	UF.Click(DemoQA.tabWebTables);
+	//WebTables 
+
+	//Button
+	//UF.Click(DemoQA.tabButtons);
+	//UF.Click(DemoQA_Buttons.btnClick);
+	//UF.RightClick(DemoQA_Buttons.btnRightCLick); //Not Working
+	//UF.DoubleCLick(DemoQA_Buttons.btnDoubleClick); //Not Working
+	
+	//Links
+	UF.Click(DemoQA.tabLinks);
+	UF.Click(DemoQA_Links.lnkHome); 
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
 	
 	
 	
