@@ -1,16 +1,21 @@
 package Libraries;
 
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+
 
 public class BrowserConfig 
 {
 	
 	 public static WebDriver driver;
+	 public static WebDriver wait;
+	 
 	public static WebDriver setBrowser(String url, String caselevel)
 	{
 		switch(caselevel)
@@ -18,6 +23,7 @@ public class BrowserConfig
 		case "Chrome":
 			System.setProperty("webdriver.chrome.driver","C:\\Users\\PREDATOR\\Documents\\chromedriver.exe"); 
 			 driver=new ChromeDriver();
+					 
 			 break;
 			 
 		case "Edge":
@@ -26,16 +32,37 @@ public class BrowserConfig
 			 break;
 			 
 		case "Firefox":
+			//DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 			System.setProperty("webdriver.gecko.driver","C:\\Users\\PREDATOR\\Documents\\geckodriver.exe"); 
-			driver=new FirefoxDriver();
+			
+			FirefoxOptions options = new FirefoxOptions();			
+
+			String path = "C:\\Users\\PREDATOR\\Documents\\";
+			options.addPreference("browser.download.folderList", 2);
+			options.addPreference("browser.download.dir", path);
+			options.addPreference("browser.download.manager.alertOnEXEOpen", false);
+			options.addPreference("browser.helperApps.neverAsk.saveToDisk", "application/msword, application/csv, application/ris, text/csv, image/JPEG, application/pdf, text/html, text/plain, application/zip, application/x-zip, application/x-zip-compressed, application/download, application/octet-stream");
+			options.addPreference("browser.download.manager.showWhenStarting", false);
+			options.addPreference("browser.download.manager.focusWhenStarting", false);  
+			options.addPreference("browser.download.useDownloadDir", true);
+			options.addPreference("browser.helperApps.alwaysAsk.force", false);
+			options.addPreference("browser.download.manager.alertOnEXEOpen", false);
+			options.addPreference("browser.download.manager.closeWhenDone", true);
+			options.addPreference("browser.download.manager.showAlertOnComplete", false);
+			options.addPreference("browser.download.manager.useWindow", false);
+			options.addPreference("services.sync.prefs.sync.browser.download.manager.showWhenStarting", false);
+			options.addPreference("pdfjs.disabled", true);
+			
+			driver= new FirefoxDriver(options);
 			break;
-			}
-		
+			}	
 		 driver.manage().window().maximize();
 		 driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 		 driver.manage().deleteAllCookies();
 		 driver.get(url);
 		 return driver;
 	}
+	
+
 
 }

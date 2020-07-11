@@ -1,5 +1,6 @@
 package Libraries;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -10,11 +11,15 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import BaseDriver.FrameworkDriver;
 
 public class UF {
-	public static WebDriver driver;
+	//public static WebDriver driver;
+	public static WebDriverWait wait = new WebDriverWait(FrameworkDriver.driver,20);
+	
 	public static void TextBox(By ObjRep , String Keyvalue) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
@@ -24,6 +29,22 @@ public class UF {
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		ele.click();
+	}
+	public static void WaitUntillVisible(By ObjRep) 
+	{	
+		@SuppressWarnings("unused")
+		WebElement ele=wait.until(ExpectedConditions.visibilityOfElementLocated(ObjRep));
+	}
+	public static void WaitUntillEnable(By ObjRep) 
+	{	
+		
+		@SuppressWarnings("unused")
+		WebElement ele=wait.until(ExpectedConditions.elementToBeClickable(ObjRep));
+	}
+	public static String GetCSSValue(By ObjRep,String Property) 
+	{	
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		return ele.getCssValue(Property);
 	}
 	public static void Submit(By ObjRep) 
 	{	
@@ -54,14 +75,14 @@ public class UF {
 	public static void DoubleCLick(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		Actions action = new Actions(driver);
+		Actions action = new Actions(FrameworkDriver.driver);
 		action.doubleClick(ele).build().perform();
 	}	
 
 	public static void RightClick(By ObjRep) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		Actions action = new Actions(driver).contextClick(ele);
+		Actions action = new Actions(FrameworkDriver.driver).contextClick(ele);
 		action.build().perform();
 	}
 	
@@ -86,6 +107,28 @@ public class UF {
 			 FrameworkDriver.driver.switchTo().window(CurrentTab);
 		 }
 		}
+	}
+	
+	public static void UploadBySendKeys(By ObjRep,String FilePath)
+	{
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		ele.sendKeys(FilePath);
+	}
+
+	public static void AutoITscript(String FilePath) {
+	
+		try {
+			Runtime.getRuntime().exec(FilePath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public static String GetProperty(By ObjRep,String tagname) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		return ele.getAttribute(tagname);
+		
 	}
 	
 
