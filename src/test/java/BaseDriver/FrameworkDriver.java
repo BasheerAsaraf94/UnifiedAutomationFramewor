@@ -1,4 +1,5 @@
 package BaseDriver;
+import java.awt.AWTException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -22,11 +23,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Libraries.BrowserConfig;
 import Libraries.UF;
 import ObjectRepository.DemoQA;
+import ObjectRepository.DemoQA_Alerts;
+import ObjectRepository.DemoQA_AutoComplete;
+import ObjectRepository.DemoQA_BrowserWindows;
 import ObjectRepository.DemoQA_Buttons;
 import ObjectRepository.DemoQA_CheckBox;
 import ObjectRepository.DemoQA_DynamicProperties;
 import ObjectRepository.DemoQA_Files;
+import ObjectRepository.DemoQA_Frames;
 import ObjectRepository.DemoQA_Links;
+import ObjectRepository.DemoQA_Modal;
 import ObjectRepository.DemoQA_RadioBtn;
 import ObjectRepository.DemoQA_TextBox;
    
@@ -38,11 +44,11 @@ public class FrameworkDriver extends BrowserConfig
 	public static WebDriver driver;	
 
 	
-	public static void main(String[] args) throws InterruptedException, IOException  
+	public static void main(String[] args) throws InterruptedException, IOException, AWTException  
 	{
 			
 	driver= setBrowser("https://demoqa.com/books", "Firefox");
-
+/*
 	// Text Box
 	UF.Click(DemoQA.tabElements);
 	UF.Click(DemoQA.tabTextBox);
@@ -111,5 +117,102 @@ public class FrameworkDriver extends BrowserConfig
     UF.WaitUntillEnable(DemoQA_DynamicProperties.btnEnableafter5sec);
     UF.Click(DemoQA_DynamicProperties.btnEnableafter5sec);
     System.out.println(Color.fromString(UF.GetCSSValue(DemoQA_DynamicProperties.btnColorchange,"Color")).asHex());
+    
+   
+    UF.jsScrollIntoView(DemoQA.tabAlertsFrameswindows);
+    UF.Click(DemoQA.tabAlertsFrameswindows);
+    
+  
+    //Browser Windows
+    UF.jsScrollIntoView(DemoQA.tabBrowserwindows);
+	UF.Click(DemoQA.tabBrowserwindows);	
+	String CurrentTab1 = UF.GetCurrentTab();	
+	UF.Click(DemoQA_BrowserWindows.btnNewTab); 	
+	Thread.sleep(4000);
+	UF.SwitchTab(CurrentTab1);
+	
+	UF.Click(DemoQA_BrowserWindows.btnNewWindow);
+	Thread.sleep(4000);
+	UF.SwitchTab(CurrentTab1);
+	
+	UF.Click(DemoQA_BrowserWindows.btnNewMessage);
+	Thread.sleep(4000);
+	UF.SwitchTab(CurrentTab1);
+	
+	
+	
+	//Alerts
+	UF.jsScrollIntoView(DemoQA.tabAlerts);
+	UF.Click(DemoQA.tabAlerts);	
+	UF.Click(DemoQA_Alerts.btnAlert);
+	Thread.sleep(1000);
+	UF.AlertAccept(0);
+	UF.Click(DemoQA_Alerts.btnAlert5Sec);
+	Thread.sleep(1000);
+	UF.AlertAccept(0);
+	UF.Click(DemoQA_Alerts.btnConfirmBox);
+	Thread.sleep(1000);
+	UF.AlertAccept(0);
+	UF.Click(DemoQA_Alerts.btnConfirmBox);
+	Thread.sleep(1000);
+	UF.AlertDismiss();
+	UF.Click(DemoQA_Alerts.btnpromptBox);
+	Thread.sleep(1000);
+	UF.AlertSendtext("Basheer");
+	Thread.sleep(1000);
+	UF.AlertAccept(0);
+	UF.Click(DemoQA_Alerts.btnpromptBox);
+	Thread.sleep(1000);
+	UF.AlertSendtext("Basheer");
+	Thread.sleep(1000);
+	UF.AlertDismiss();
+
+	
+	
+	//Frames
+	//UF.jsScrollDownVertical(1000);
+	UF.jsScrollIntoView(DemoQA.tabFrames);
+	UF.Click(DemoQA.tabFrames);	
+	UF.SwitchToFrame("frame1");
+	System.out.println(UF.GetText(DemoQA_Frames.lblHeader));
+	UF.SwitchToDefaultFrame();
+	System.out.println(UF.GetText(DemoQA_Frames.lblMainheader));
+	UF.SwitchToFrame("frame2");
+	UF.jsScrollDownVertical(1000);
+	UF.SwitchToDefaultFrame(); 
+	
+	//Modal
+	UF.jsScrollIntoView(DemoQA.tabModalDialogs);
+	UF.Click(DemoQA.tabModalDialogs);
+	UF.Click(DemoQA_Modal.btnShowSmallModal); 
+	UF.Click(DemoQA_Modal.btnCloseSmallModal);
+	UF.Click(DemoQA_Modal.btnShowLargeModal);
+	UF.Click(DemoQA_Modal.btnCloseLargeModal);
+	
+	*/
+	
+	//Widgets
+	UF.jsScrollIntoView(DemoQA.tabWidgets);
+	UF.Click(DemoQA.tabWidgets);
+	
+	//AutoComplete
+	UF.jsScrollIntoView(DemoQA.tabAutoComplete);
+	UF.Click(DemoQA.tabAutoComplete);
+	Thread.sleep(2000);
+	UF.TextBox(DemoQA_AutoComplete.lstMultipleColorName,"B" );
+	UF.selectOptionWithIndex(DemoQA_AutoComplete.lstMultipleColorNamelist,1);
+	Thread.sleep(2000);
+	UF.TextBox(DemoQA_AutoComplete.lstSingleColorName,"B" );
+	Thread.sleep(2000);
+	UF.selectOptionWithText(DemoQA_AutoComplete.lstSingleColorName, "Black");
+	
+	
+	
+	
+	
+	
+    
+	
+	
 	}
 }

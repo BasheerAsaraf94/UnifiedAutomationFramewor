@@ -1,9 +1,14 @@
 package Libraries;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -41,6 +46,43 @@ public class UF {
 		@SuppressWarnings("unused")
 		WebElement ele=wait.until(ExpectedConditions.elementToBeClickable(ObjRep));
 	}
+	public static void AlertAccept(int flag) throws AWTException 
+	{	
+		 wait.until(ExpectedConditions.alertIsPresent());
+		Alert a = FrameworkDriver.driver.switchTo().alert();
+		if (flag == 1) {
+		 Robot robot = new Robot();
+		 robot.delay(5000);
+		 for (int i = 1; i <= 2; i++) {
+			 
+		     robot.keyPress(KeyEvent.VK_TAB);
+		 }
+	     robot.keyPress(KeyEvent.VK_SPACE);
+		}
+		a.accept();
+	}	
+	public static void AlertDismiss() 
+	{	
+		 wait.until(ExpectedConditions.alertIsPresent());
+		Alert a = FrameworkDriver.driver.switchTo().alert();
+		a.dismiss();
+		 
+	}
+	
+	public static void AlertSendtext(String value) 
+	{	
+		 wait.until(ExpectedConditions.alertIsPresent());
+		Alert a = FrameworkDriver.driver.switchTo().alert();
+		a.sendKeys(value);
+	}
+	public static void SwitchToActiveElement() 
+	{	
+		 wait.until(ExpectedConditions.alertIsPresent());
+		FrameworkDriver.driver.switchTo().activeElement();
+	}
+	
+	
+	
 	public static String GetCSSValue(By ObjRep,String Property) 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
@@ -93,6 +135,13 @@ public class UF {
 		executor.executeScript("arguments[0].scrollIntoView()", ele);
 	}
 	
+	public static void jsScrollDownVertical(int pixel)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) FrameworkDriver.driver;
+		 js.executeScript("window.scrollBy(0,"+pixel+")");
+		
+	}
+	
 	public static String GetCurrentTab()
 	{
 		String  currentTab = FrameworkDriver.driver.getWindowHandle();
@@ -128,8 +177,68 @@ public class UF {
 	public static String GetProperty(By ObjRep,String tagname) {
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		return ele.getAttribute(tagname);
+		}
+	
+	public static void SwitchToFrame(String FrameID) {
+		FrameworkDriver.driver.switchTo().frame(FrameID);
+		}
+	
+	public static void SwitchToWindow(String WindowID) {
+		FrameworkDriver.driver.switchTo().window(WindowID);
+		}
+	
+public static void selectOptionWithIndex(By ObjRep,int indexToSelect) {
 		
+		//try {
+			//WebElement autoOptions=FrameworkDriver.driver.findElement(ObjRep);
+			//wait.until(ExpectedConditions.visibilityOf(autoOptions));
+
+			List<WebElement> optionsToSelect = FrameworkDriver.driver.findElements(By.className("auto-complete__value-container auto-complete__value-container--is-multi css-1hwfws3"));;
+		        if(indexToSelect<=optionsToSelect.size()) {
+		        	System.out.println("Trying to select based on index: "+indexToSelect);
+		           optionsToSelect.get(indexToSelect).click();
+		      }
+		//} 		
+		//catch (NoSuchElementException e) {
+			//System.out.println(e.getStackTrace());
+		//}
+		//catch (Exception e) {
+			//System.out.println(e.getStackTrace());
+		//}
 	}
+
+public static void selectOptionWithText(By ObjRep,String textToSelect) {
+	try {
+		WebElement autoOptions=FrameworkDriver.driver.findElement(ObjRep);
+		wait.until(ExpectedConditions.visibilityOf(autoOptions));
+
+		List<WebElement> optionsToSelect = autoOptions.findElements(By.tagName("li"));
+		for(WebElement option : optionsToSelect){
+	        if(option.getText().equals(textToSelect)) {
+	        	System.out.println("Trying to select: "+textToSelect);
+	            option.click();
+	            break;
+	        }
+	    }
+		
+	} catch (NoSuchElementException e) {
+		System.out.println(e.getStackTrace());
+	}
+	catch (Exception e) {
+		System.out.println(e.getStackTrace());
+	}
+}
+	
+	
+	public static void SwitchToDefaultFrame() {
+		FrameworkDriver.driver.switchTo().defaultContent();
+		}
+	
+
+	public static String GetText(By ObjRep) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		return ele.getText();
+		}
 	
 
 }
