@@ -23,6 +23,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Libraries.BrowserConfig;
 import Libraries.UF;
 import ObjectRepository.DemoQA;
+import ObjectRepository.DemoQA_Accordian;
 import ObjectRepository.DemoQA_Alerts;
 import ObjectRepository.DemoQA_AutoComplete;
 import ObjectRepository.DemoQA_BrowserWindows;
@@ -32,9 +33,15 @@ import ObjectRepository.DemoQA_DynamicProperties;
 import ObjectRepository.DemoQA_Files;
 import ObjectRepository.DemoQA_Frames;
 import ObjectRepository.DemoQA_Links;
+import ObjectRepository.DemoQA_Menu;
 import ObjectRepository.DemoQA_Modal;
+import ObjectRepository.DemoQA_ProgressBar;
 import ObjectRepository.DemoQA_RadioBtn;
+import ObjectRepository.DemoQA_Select;
+import ObjectRepository.DemoQA_Tabs;
 import ObjectRepository.DemoQA_TextBox;
+import ObjectRepository.DemoQA_slider;
+import ObjectRepository.DemoQa_ToolTips;
    
 public class FrameworkDriver extends BrowserConfig 
 {
@@ -195,7 +202,19 @@ public class FrameworkDriver extends BrowserConfig
 	UF.jsScrollIntoView(DemoQA.tabWidgets);
 	UF.Click(DemoQA.tabWidgets);
 	
-	//AutoComplete
+	/*
+	
+	//Accordian
+	UF.jsScrollIntoView(DemoQA.tabAccordian);
+	UF.Click(DemoQA.tabAccordian);
+	UF.Click(DemoQA_Accordian.Accord1);
+	UF.Click(DemoQA_Accordian.Accord2);
+	UF.jsScrollIntoView(DemoQA_Accordian.Accord3);
+	UF.Click(DemoQA_Accordian.Accord3);
+	UF.jsScrollIntoView(DemoQA_Accordian.Accord3);
+	
+	
+	//AutoComplete is not working
 	UF.jsScrollIntoView(DemoQA.tabAutoComplete);
 	UF.Click(DemoQA.tabAutoComplete);
 	Thread.sleep(2000);
@@ -205,6 +224,88 @@ public class FrameworkDriver extends BrowserConfig
 	UF.TextBox(DemoQA_AutoComplete.lstSingleColorName,"B" );
 	Thread.sleep(2000);
 	UF.selectOptionWithText(DemoQA_AutoComplete.lstSingleColorName, "Black");
+	
+	
+	
+	//Date picker
+	
+	//slider
+	UF.jsScrollIntoView(DemoQA.tabSlider);
+	UF.Click(DemoQA.tabSlider);
+	//UF.Click(DemoQA_slider.slider);
+	//UF.DragandDrop(DemoQA_slider.slider, 40, 0);
+	//Thread.sleep(2000);
+	UF.ClickandHold(DemoQA_slider.slider, 300, 0);
+	
+	
+    
+	//ProgressBar is not working
+	UF.jsScrollIntoView(DemoQA.tabProgressBar);
+	UF.Click(DemoQA.tabProgressBar);
+	UF.Click(DemoQA_ProgressBar.btnstart);
+	Thread.sleep(2000);
+	UF.Click(DemoQA_ProgressBar.progressbar);
+	UF.GetProgressBarWidth(DemoQA_ProgressBar.progressbar);
+	
+	
+	
+	//Tab
+	UF.jsScrollIntoView(DemoQA.tabTabs);
+	UF.Click(DemoQA.tabTabs);
+	UF.Click(DemoQA_Tabs.tabOrigin);
+	UF.Click(DemoQA_Tabs.tabWhat);
+	UF.Click(DemoQA_Tabs.tabUse);
+	
+	
+	//Mouse Hover
+	UF.jsScrollIntoView(DemoQA.tabToolTips);
+	UF.Click(DemoQA.tabToolTips);
+	//UF.Click(DemoQa_ToolTips.btnHover);
+	Thread.sleep(3000);
+	UF.MouseOver(DemoQa_ToolTips.btnHover);
+	Thread.sleep(3000);
+	//UF.Click(DemoQa_ToolTips.txtHover);
+	UF.MouseOver(DemoQa_ToolTips.txtHover);
+	
+	
+	
+	
+	//Main Menu
+	UF.jsScrollIntoView(DemoQA.tabMenu);
+	UF.Click(DemoQA.tabMenu);
+	
+	Thread.sleep(2000);
+	UF.MouseOver(DemoQA_Menu.menuItem1);
+	
+	Thread.sleep(2000);
+	UF.MouseOver(DemoQA_Menu.menuItem3);
+	
+	Thread.sleep(2000);
+	UF.MouseOver(DemoQA_Menu.menuItem2);
+	
+	Thread.sleep(2000);
+	UF.MouseOver(DemoQA_Menu.submenulist);
+	
+	Thread.sleep(2000);
+	UF.MouseOver(DemoQA_Menu.subsubmenuItem1);
+	
+	*/
+	
+	//Select Menu
+	UF.jsScrollIntoView(DemoQA.tabSelectMenu);
+	UF.Click(DemoQA.tabSelectMenu);
+	
+	UF.SelectByValue(DemoQA_Select.selectvalue1, "1");
+	UF.SelectByIndex(DemoQA_Select.selectvalue2, 1);
+	UF.SelectByVisibleText(DemoQA_Select.selectvale3, "Blue");
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

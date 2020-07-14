@@ -25,7 +25,7 @@ public class DemoQA {
 	public static final By tabSlider=By.xpath("//div[contains(@class,'element-list collapse show')]//li[@id='item-3']");
 	public static final By tabProgressBar=By.xpath("//div[contains(@class,'element-list collapse show')]//li[@id='item-4']");
 	public static final By tabTabs=By.xpath("//div[contains(@class,'element-list collapse show')]//li[@id='item-5']");
-	public static final By tabToolTips=By.xpath("//div[contains(@class,'element-list collapse show')]//li[@id='item-5']");
+	public static final By tabToolTips=By.xpath("//div[contains(@class,'element-list collapse show')]//li[@id='item-6']");
 	public static final By tabMenu=By.xpath("//div[contains(@class,'element-list collapse show')]//li[@id='item-7']");
 	public static final By tabSelectMenu=By.xpath("//li[@id='item-8']");
 	

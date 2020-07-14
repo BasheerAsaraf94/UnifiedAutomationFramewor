@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -17,6 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import BaseDriver.FrameworkDriver;
@@ -189,22 +191,22 @@ public class UF {
 	
 public static void selectOptionWithIndex(By ObjRep,int indexToSelect) {
 		
-		//try {
-			//WebElement autoOptions=FrameworkDriver.driver.findElement(ObjRep);
-			//wait.until(ExpectedConditions.visibilityOf(autoOptions));
+		try {
+			WebElement autoOptions=FrameworkDriver.driver.findElement(ObjRep);
+			wait.until(ExpectedConditions.visibilityOf(autoOptions));
 
 			List<WebElement> optionsToSelect = FrameworkDriver.driver.findElements(By.className("auto-complete__value-container auto-complete__value-container--is-multi css-1hwfws3"));;
 		        if(indexToSelect<=optionsToSelect.size()) {
 		        	System.out.println("Trying to select based on index: "+indexToSelect);
 		           optionsToSelect.get(indexToSelect).click();
 		      }
-		//} 		
-		//catch (NoSuchElementException e) {
-			//System.out.println(e.getStackTrace());
-		//}
-		//catch (Exception e) {
-			//System.out.println(e.getStackTrace());
-		//}
+		   } 		
+		catch (NoSuchElementException e) {
+			System.out.println(e.getStackTrace());
+		}
+		catch (Exception e) {
+			System.out.println(e.getStackTrace());
+		}
 	}
 
 public static void selectOptionWithText(By ObjRep,String textToSelect) {
@@ -239,6 +241,58 @@ public static void selectOptionWithText(By ObjRep,String textToSelect) {
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		return ele.getText();
 		}
+	
+	public static void DragandDrop(By ObjRep,int xaxis,int yaxis) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		Actions action = new Actions(FrameworkDriver.driver);
+		action.dragAndDropBy(ele, xaxis,yaxis).build().perform();
+	  // action.moveToElement(slider).clickAndHold().moveByOffset(20,0).release().perform();
+		}
+	
+	public static void ClickandHold(By ObjRep,int xaxis,int yaxis) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		Actions action = new Actions(FrameworkDriver.driver);
+		Dimension sliderSize = ele.getSize();
+		int sliderWidth = sliderSize.getWidth();
+		int xCoord = ele.getLocation().getX();
+		System.out.println(sliderWidth);
+		System.out.println(xCoord);
+		//action.dragAndDropBy(ele, xaxis,yaxis).build().perform();
+		action.moveToElement(ele).clickAndHold().moveByOffset(xaxis,yaxis).release().perform();
+		}
+	
+	public static void GetProgressBarWidth(By ObjRep) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		Dimension sliderSize = ele.getSize();
+		int sliderWidth = sliderSize.getWidth();
+		int xCoord = ele.getLocation().getX();
+		}
+	
+	public static void MouseOver(By ObjRep) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		Actions action = new Actions(FrameworkDriver.driver);
+		action.moveToElement(ele).perform();		
+		}
+	
+	
+	public static void SelectByVisibleText(By ObjRep, String VisibleText) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		Select selObj=new Select(ele);
+		selObj.selectByVisibleText(VisibleText);		
+		}
+	
+	public static void SelectByIndex(By ObjRep, int Indexvalue) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		Select selObj=new Select(ele);
+		selObj.selectByIndex(Indexvalue);		
+		}
+	
+	public static void SelectByValue(By ObjRep, String Value) {
+		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		Select selObj=new Select(ele);
+		selObj.selectByValue(Value);		
+		}
+	
 	
 
 }
