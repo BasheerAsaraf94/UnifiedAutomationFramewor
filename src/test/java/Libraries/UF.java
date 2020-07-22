@@ -3,6 +3,7 @@ package Libraries;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -21,21 +24,38 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.google.common.io.Files;
+
 import BaseDriver.FrameworkDriver;
+import Buisness_Methods.Basesetupdriver;
 
 public class UF {
 	//public static WebDriver driver;
 	public static WebDriverWait wait = new WebDriverWait(FrameworkDriver.driver,20);
 	
-	public static void TextBox(By ObjRep , String Keyvalue) 
+	public static void TextBox(By ObjRep , String Keyvalue) throws IOException 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
-		ele.sendKeys(Keyvalue);
+		wait.until(ExpectedConditions.visibilityOf(ele));
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
+		ele.sendKeys(Keyvalue); 
+		UF.takeSnapShot();
 	}
-	public static void Click(By ObjRep) 
+	
+	public static void takeSnapShot() throws IOException {		 
+		TakesScreenshot scrShot =((TakesScreenshot)FrameworkDriver.getdriver());
+		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+		File DestFile=new File("C:\\Users\\PREDATOR\\eclipse-workspace\\BasheerTestFramework\\Screenshot\\test"+System.currentTimeMillis()+".png");
+		Files.copy(SrcFile, DestFile);
+	}
+	
+	public static void Click(By ObjRep) throws IOException 
 	{	
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
+		wait.until(ExpectedConditions.visibilityOf(ele));
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
 		ele.click();
+		UF.takeSnapShot();
 	}
 	public static void WaitUntillVisible(By ObjRep) 
 	{	

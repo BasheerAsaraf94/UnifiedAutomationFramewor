@@ -26,15 +26,6 @@ public class BrowserConfig
 			
 			 WebDriverManager.chromedriver().setup(); // Introduction to Webdriver Manager        
 			driver= new ChromeDriver();
-			// driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
-			    
-			 //Navigating to the URL
-			 //driver.get("https://www.seleniumeasy.com/test/basic-first-form-demo.html");
-			 //driver.get("https://connect.maveric-systems.com");
-			 Thread.sleep(5000);
-			
-			//System.setProperty("webdriver.chrome.driver","C:\\Users\\PREDATOR\\Documents\\chromedriver.exe"); 
-			 //driver=new ChromeDriver();
 					 
 			 break;
 			 
@@ -44,7 +35,7 @@ public class BrowserConfig
 			 break;
 			 
 		case "Firefox":
-			//DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+			
 			System.setProperty("webdriver.gecko.driver","C:\\Users\\PREDATOR\\Documents\\geckodriver.exe"); 
 			
 			FirefoxOptions options = new FirefoxOptions();			
