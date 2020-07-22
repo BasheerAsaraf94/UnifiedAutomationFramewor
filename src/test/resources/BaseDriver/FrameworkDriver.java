@@ -54,36 +54,54 @@ public class FrameworkDriver extends BrowserConfig
 	public static void main(String[] args) throws InterruptedException, IOException, AWTException  
 	{
 			
-	driver= setBrowser("https://demoqa.com/books", "Firefox");
-/*
+	driver= setBrowser("https://demoqa.com/books", "Chrome");
+
+	
+	/*
+	 
 	// Text Box
 	UF.Click(DemoQA.tabElements);
 	UF.Click(DemoQA.tabTextBox);
+	Thread.sleep(2000);
 	UF.TextBox(DemoQA_TextBox.txtboxFullName, "Basheer");
+	Thread.sleep(2000);
 	UF.TextBox(DemoQA_TextBox.txtboxEmail, "basheera@maveric-systems.com");
+	Thread.sleep(2000);
 	UF.TextBox(DemoQA_TextBox.txtboxCurrentAddress1, "Chennai");
+	Thread.sleep(2000);
 	UF.TextBox(DemoQA_TextBox.txtboxCurrentAddress2, "Tamil Nadu");
+	Thread.sleep(2000);
 	UF.SendKeysEnter(DemoQA_TextBox.btnSubmit);
 	
 	//Checkbox
 	UF.Click(DemoQA.tabCheckBox);
+	Thread.sleep(2000);
 	UF.Click(DemoQA_CheckBox.chkboxHome);
+	Thread.sleep(2000);
 	UF.Click(DemoQA_CheckBox.chklstbtn);
+	Thread.sleep(2000);
 	UF.Click(DemoQA_CheckBox.chkboxDesktop);
 	
 	//Radiobutton
 	UF.Click(DemoQA.tabRadioBtn);
+	Thread.sleep(2000);
 	UF.Click(DemoQA_RadioBtn.rdbtnYes);	
+	Thread.sleep(2000);
 	UF.Click(DemoQA_RadioBtn.rdbImpressive);
+	Thread.sleep(2000);
 	UF.Click(DemoQA_RadioBtn.rdbtnNo);
 	
 	//WebTables 
 
 	//Button
 	UF.Click(DemoQA.tabButtons);
+	Thread.sleep(2000);
 	UF.Click(DemoQA_Buttons.btnClick);
+	Thread.sleep(2000);
 	UF.RightClick(DemoQA_Buttons.btnRightCLick); 
+	Thread.sleep(2000);
 	UF.DoubleCLick(DemoQA_Buttons.btnDoubleClick); 
+	
 	
 	//Links
 	UF.jsScrollIntoView(DemoQA.tabLinks);
@@ -105,6 +123,8 @@ public class FrameworkDriver extends BrowserConfig
             anchor.click();
         }
 	  }
+	
+	
    //Files
     UF.jsScrollIntoView(DemoQA.tabUpldDwnld);
     UF.Click(DemoQA.tabUpldDwnld);
@@ -113,6 +133,7 @@ public class FrameworkDriver extends BrowserConfig
     Thread.sleep(5000);
     UF.AutoITscript("C:\\Users\\PREDATOR\\Documents\\FileUpload.exe"); 
     UF.Click(DemoQA_Files.btnDownload);
+    
     
     //Dynamic Properties
     UF.jsScrollIntoView(DemoQA.tabDynamicprop);
@@ -196,13 +217,13 @@ public class FrameworkDriver extends BrowserConfig
 	UF.Click(DemoQA_Modal.btnShowLargeModal);
 	UF.Click(DemoQA_Modal.btnCloseLargeModal);
 	
-	*/
+	
 	
 	//Widgets
 	UF.jsScrollIntoView(DemoQA.tabWidgets);
 	UF.Click(DemoQA.tabWidgets);
 	
-	/*
+	
 	
 	//Accordian
 	UF.jsScrollIntoView(DemoQA.tabAccordian);
@@ -213,7 +234,7 @@ public class FrameworkDriver extends BrowserConfig
 	UF.Click(DemoQA_Accordian.Accord3);
 	UF.jsScrollIntoView(DemoQA_Accordian.Accord3);
 	
-	
+	/*
 	//AutoComplete is not working
 	UF.jsScrollIntoView(DemoQA.tabAutoComplete);
 	UF.Click(DemoQA.tabAutoComplete);
@@ -224,6 +245,7 @@ public class FrameworkDriver extends BrowserConfig
 	UF.TextBox(DemoQA_AutoComplete.lstSingleColorName,"B" );
 	Thread.sleep(2000);
 	UF.selectOptionWithText(DemoQA_AutoComplete.lstSingleColorName, "Black");
+	*/
 	
 	
 	
@@ -238,7 +260,7 @@ public class FrameworkDriver extends BrowserConfig
 	UF.ClickandHold(DemoQA_slider.slider, 300, 0);
 	
 	
-    
+    /*
 	//ProgressBar is not working
 	UF.jsScrollIntoView(DemoQA.tabProgressBar);
 	UF.Click(DemoQA.tabProgressBar);
@@ -246,7 +268,7 @@ public class FrameworkDriver extends BrowserConfig
 	Thread.sleep(2000);
 	UF.Click(DemoQA_ProgressBar.progressbar);
 	UF.GetProgressBarWidth(DemoQA_ProgressBar.progressbar);
-	
+	*/
 	
 	
 	//Tab
@@ -289,18 +311,25 @@ public class FrameworkDriver extends BrowserConfig
 	Thread.sleep(2000);
 	UF.MouseOver(DemoQA_Menu.subsubmenuItem1);
 	
-	*/
+
 	
 	//Select Menu
 	UF.jsScrollIntoView(DemoQA.tabSelectMenu);
 	UF.Click(DemoQA.tabSelectMenu);
 	
-	UF.SelectByValue(DemoQA_Select.selectvalue1, "1");
-	UF.SelectByIndex(DemoQA_Select.selectvalue2, 1);
+	//UF.SelectByValue(DemoQA_Select.selectvalue1, "1");
+	
+	
+	
+	//List<WebElement> oSelect = driver.findElements(By.className(" css-1wa3eu0-placeholder"));
+	//List <WebElement> elementCount = oSelect.getOptions();
+	//System.out.println(elementCount.size());
+	
+	//UF.SelectByIndex(DemoQA_Select.selectvalue2, 1);
 	UF.SelectByVisibleText(DemoQA_Select.selectvale3, "Blue");
 	
-	
-	
+		
+	*/
 	
 	
 	

@@ -9,6 +9,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class BrowserConfig 
 {
@@ -16,13 +18,23 @@ public class BrowserConfig
 	 public static WebDriver driver;
 	 public static WebDriver wait;
 	 
-	public static WebDriver setBrowser(String url, String caselevel)
+	public static WebDriver setBrowser(String url, String caselevel) throws InterruptedException
 	{
 		switch(caselevel)
 		{
 		case "Chrome":
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\PREDATOR\\Documents\\chromedriver.exe"); 
-			 driver=new ChromeDriver();
+			
+			 WebDriverManager.chromedriver().setup(); // Introduction to Webdriver Manager        
+			driver= new ChromeDriver();
+			// driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+			    
+			 //Navigating to the URL
+			 //driver.get("https://www.seleniumeasy.com/test/basic-first-form-demo.html");
+			 //driver.get("https://connect.maveric-systems.com");
+			 Thread.sleep(5000);
+			
+			//System.setProperty("webdriver.chrome.driver","C:\\Users\\PREDATOR\\Documents\\chromedriver.exe"); 
+			 //driver=new ChromeDriver();
 					 
 			 break;
 			 
