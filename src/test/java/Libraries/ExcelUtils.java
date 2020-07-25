@@ -50,7 +50,7 @@ public class ExcelUtils {
 	 
 	    // you can write a function as well to get Column count
 	 
-	    int totalCols = 11;
+	    int totalCols = 12;
 	 
 	    tabArray=new String[totalRows][totalCols];
 	 
@@ -99,12 +99,6 @@ public class ExcelUtils {
 	 Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
 	 
 	 CellType dataType = Cell.getCellType();
-	 
-	// if  (dataType == 3) {
-	 
-	 //return "";
-	 
-	 //}else{
 	 
 	 String CellData = Cell.getStringCellValue();
 	 

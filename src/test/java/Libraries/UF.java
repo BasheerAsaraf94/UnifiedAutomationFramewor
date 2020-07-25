@@ -25,9 +25,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.io.Files;
+import com.relevantcodes.extentreports.LogStatus;
 
 import BaseDriver.FrameworkDriver;
-import Buisness_Methods.Basesetupdriver;
+import Scuba.ParaBank;
+
 
 public class UF {
 	//public static WebDriver driver;
@@ -39,6 +41,7 @@ public class UF {
 		wait.until(ExpectedConditions.visibilityOf(ele));
 		wait.until(ExpectedConditions.elementToBeClickable(ele));
 		ele.sendKeys(Keyvalue); 
+		ParaBank.test.log(LogStatus.PASS, Keyvalue + " : Entered Successfully");
 		UF.takeSnapShot();
 	}
 	
@@ -55,6 +58,7 @@ public class UF {
 		wait.until(ExpectedConditions.visibilityOf(ele));
 		wait.until(ExpectedConditions.elementToBeClickable(ele));
 		ele.click();
+		ParaBank.test.log(LogStatus.PASS,"Clicked Successfully");
 		UF.takeSnapShot();
 	}
 	public static void WaitUntillVisible(By ObjRep) 
@@ -295,22 +299,26 @@ public static void selectOptionWithText(By ObjRep,String textToSelect) {
 		}
 	
 	
-	public static void SelectByVisibleText(By ObjRep, String VisibleText) {
+	public static void SelectByVisibleText(By ObjRep, String VisibleText) throws IOException {
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		Select selObj=new Select(ele);
-		selObj.selectByVisibleText(VisibleText);		
+		selObj.selectByVisibleText(VisibleText);
+		ParaBank.test.log(LogStatus.PASS,VisibleText + " Selected Successfully");
+		UF.takeSnapShot();
 		}
 	
-	public static void SelectByIndex(By ObjRep, int Indexvalue) {
+	public static void SelectByIndex(By ObjRep, int Indexvalue) throws IOException {
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		Select selObj=new Select(ele);
-		selObj.selectByIndex(Indexvalue);		
+		selObj.selectByIndex(Indexvalue);	
+		UF.takeSnapShot();
 		}
 	
-	public static void SelectByValue(By ObjRep, String Value) {
+	public static void SelectByValue(By ObjRep, String Value) throws IOException {
 		WebElement ele=FrameworkDriver.driver.findElement(ObjRep);
 		Select selObj=new Select(ele);
-		selObj.selectByValue(Value);		
+		selObj.selectByValue(Value);
+		UF.takeSnapShot();
 		}
 	
 	

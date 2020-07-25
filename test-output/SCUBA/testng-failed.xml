@@ -5,6 +5,9 @@
     <classes>
       <class name="Scuba.ParaBank">
         <methods>
+          <include name="OpenSavingAccount" invocation-numbers="0"/>
+          <include name="extentreport"/>
+          <include name="endTest"/>
           <include name="Register" invocation-numbers="0"/>
           <include name="OpenBrowser"/>
         </methods>
